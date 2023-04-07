@@ -1,6 +1,8 @@
 class SudokuGenerator:
     def __init__(self, row_length, removed_cells):
-        pass
+        self.num_removed_cells = removed_cells
+        self.row_length = row_length
+        self.board = []
 
     def get_board(self):
         pass
@@ -34,4 +36,3 @@ class SudokuGenerator:
 
     def remove_cells(self):
         pass
-

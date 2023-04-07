@@ -1,8 +1,9 @@
 from sudoku_generator import SudokuGenerator
 
 
-def generate_sudoku(size, removed):     # This function is NOT in the SudokuGenerator class
-    pass
+def generate_sudoku(size, removed):  # This function produces the sudoku board by calling functions in sudoku_generator
+    sudoku = SudokuGenerator(size, removed)
+    return sudoku
 
 
 # The following functions are optional for a single cell
@@ -57,4 +58,12 @@ class Board:
 
 
 if __name__ == '__main__':
-    pass
+    game_mode = ""
+    if game_mode == "easy":
+        sudoku = generate_sudoku(9, 30)
+
+    elif game_mode == "medium":
+        sudoku = generate_sudoku(9, 40)
+
+    elif game_mode == "hard":
+        sudoku = generate_sudoku(9, 50)
