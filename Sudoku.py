@@ -59,6 +59,7 @@ class Board:
 
 if __name__ == '__main__':
     game_mode = ""
+    game_mode = "easy"
     if game_mode == "easy":
         sudoku = generate_sudoku(9, 30)
 
