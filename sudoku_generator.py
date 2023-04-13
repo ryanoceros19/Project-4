@@ -8,7 +8,7 @@ class SudokuGenerator:
         for i in range(9):
             row = []
             for j in range(9):
-                row.append(" ")
+                row.append(0)
             self.board.append(row)
         return self.board
 
@@ -16,23 +16,47 @@ class SudokuGenerator:
         for i in range(9):
             print(self.board[i])
 
-    def valid_in_row(self, row, num):   # Checks if the desired number is in the row. (True means num is in row)
+    def valid_in_row(self, row, num):   # Checks if the desired number is in the row. (True = num not row)
         row_list = self.board[row]
         for i in range(9):
             if num == row_list[i]:
-                return True
-        return False
+                return False
+        return True
 
-    def valid_in_col(self, col, num):   # Checks if the desired number is in the column (True means num is in col)
+    def valid_in_col(self, col, num):   # Checks if the desired number is in the column (True = num not in col)
         for i in range(9):
             row = self.board[i]
             col_value = row[col]
             if num == col_value:
-                return True
-        return False
+                return False
+        return True
 
-    def valid_in_box(self, row_start, col_start, num):
-        pass
+    def valid_in_box(self, row_start, col_start, num): # Checks if desired number is in the 3X3 box (False = num in box)
+        nums_in_box = []    # Creates new list that will hold the values in the box
+
+        '''
+        The following for loop selects the first row and calls the value in the column spot. It appends that value to
+        the nums_in_box list. It continues for the next 2 column spots. After adding those three values to the list, it
+        hops to next row and repeats the process of adding such values. 
+        '''
+        for row_num in range(row_start, row_start + 3):
+            selected_row = self.board[row_num]
+            for col_num in range(col_start, col_start + 3):
+                cell_value = selected_row[col_num]
+                nums_in_box.append(cell_value)
+
+        if nums_in_box.count(0) > 0:                    # This if statement deletes any empty cells in the box
+            num_empty_spaces = nums_in_box.count(0)
+            while num_empty_spaces != 0:
+                nums_in_box.remove(0)
+                num_empty_spaces -= 1
+
+        nums_in_box.sort()  # Sorts the list of numbers that were contained in the box
+
+        for number in nums_in_box:  # This searches the values in the box for the desired number
+            if number == num:
+                return False
+        return True
 
     def is_valid(self, row, col, num):
         pass
