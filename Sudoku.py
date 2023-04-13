@@ -62,6 +62,7 @@ if __name__ == '__main__':
     game_mode = "easy"
     if game_mode == "easy":
         sudoku = generate_sudoku(9, 30)
+        sudoku.get_board()
 
     elif game_mode == "medium":
         sudoku = generate_sudoku(9, 40)

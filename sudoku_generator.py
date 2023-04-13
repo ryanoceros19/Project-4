@@ -59,7 +59,28 @@ class SudokuGenerator:
         return True
 
     def is_valid(self, row, col, num):
-        pass
+        if self.valid_in_row(row, num) is False or self.valid_in_col(col, num) is False:
+            return False
+
+        # The following two if statements help determine the row start and col start value for the valid_in_box function
+        if 0 <= row <= 2:
+            row_start = 0
+        elif 3 <= row <= 5:
+            row_start = 3
+        elif 6 <= row <= 8:
+            row_start = 6
+
+        if 0 <= col <= 2:
+            col_start = 0
+        elif 3 <= col <= 5:
+            col_start = 3
+        elif 6 <= col <= 8:
+            col_start = 6
+
+        if self.valid_in_box(row_start,col_start, num) is False:
+            return False
+        else:
+            return True
 
     def fill_box(self, row_start, col_start):
         pass
