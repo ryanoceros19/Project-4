@@ -31,7 +31,7 @@ class SudokuGenerator:
                 return False
         return True
 
-    def valid_in_box(self, row_start, col_start, num): # Checks if desired number is in the 3X3 box (False = num in box)
+    def valid_in_box(self, row_start, col_start, num):  # Checks if desired number is in 3X3 box (False = num in box)
         nums_in_box = []    # Creates new list that will hold the values in the box
 
         '''
@@ -77,7 +77,7 @@ class SudokuGenerator:
         elif 6 <= col <= 8:
             col_start = 6
 
-        if self.valid_in_box(row_start,col_start, num) is False:
+        if self.valid_in_box(row_start, col_start, num) is False:
             return False
         else:
             return True
@@ -86,7 +86,9 @@ class SudokuGenerator:
         pass
 
     def fill_diagonal(self):
-        pass
+        self.fill_box(0, 0)
+        self.fill_box(3, 3)
+        self.fill_box(6, 6)
 
     def fill_remaining(self, row, col):
         pass
@@ -96,3 +98,8 @@ class SudokuGenerator:
 
     def remove_cells(self):
         pass
+
+
+def generate_sudoku(size, removed):  # This function produces the sudoku board by calling functions in sudoku_generator
+    sudoku = SudokuGenerator(size, removed)
+    return sudoku

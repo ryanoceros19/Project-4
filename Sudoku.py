@@ -1,11 +1,5 @@
 from sudoku_generator import SudokuGenerator
 
-
-def generate_sudoku(size, removed):  # This function produces the sudoku board by calling functions in sudoku_generator
-    sudoku = SudokuGenerator(size, removed)
-    return sudoku
-
-
 # The following functions are optional for a single cell
 class Cell:
     def __init__(self, value, row, col, screen):
